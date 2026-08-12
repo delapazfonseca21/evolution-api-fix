@@ -11,7 +11,7 @@ WORKDIR /evolution
 
 COPY ./package*.json ./
 COPY ./tsconfig.json ./
-COPY ./tsup.config.ts ./
+COPY ./tsup.config.fast.ts ./
 
 RUN npm ci --silent
 
@@ -28,7 +28,7 @@ RUN chmod +x ./Docker/scripts/* && dos2unix ./Docker/scripts/*
 
 RUN ./Docker/scripts/generate_database.sh
 
-RUN npx tsup
+RUN npx tsup --config tsup.config.fast.ts
 
 FROM node:24-alpine AS final
 
