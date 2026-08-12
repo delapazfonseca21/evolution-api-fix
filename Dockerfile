@@ -28,7 +28,7 @@ RUN chmod +x ./Docker/scripts/* && dos2unix ./Docker/scripts/*
 
 RUN ./Docker/scripts/generate_database.sh
 
-RUN npm run build
+RUN npx tsup
 
 FROM node:24-alpine AS final
 
