@@ -1,3 +1,22 @@
+# 2.3.8 (2026-10-24)
+
+### Fixed
+
+* **Baileys Interactive Buttons**: Backport interactive buttons rendering fix from v2.4.0-rc1
+  - Removed `viewOnceMessage` wrapper from `buttonMessage` (PIX and general buttons)
+  - Buttons are now sent in the original stanza form with `<biz><interactive/></biz>` node injection via `additionalNodes`
+  - `listMessage` switched back to legacy format with `listType: SINGLE_SELECT` for Web/Desktop compatibility
+  - Added `interactiveMessage.helper.ts` with `buildInteractiveBizNode()` and `buildListBizNode()`
+  - Fixes button and list rendering on WhatsApp Web and Desktop clients
+
+* **Docker Build**: Skip `tsc --noEmit` in production build to avoid OOM in low-memory environments
+  - TypeScript type-checking no longer blocks container builds on memory-constrained hosts
+
+* **Docker Build**: Add fast build config without minification for low-memory environments
+  - Optional lightweight build path for hosts with limited RAM
+
+* **tsup Build**: Fix tsup compilation configuration
+
 # 2.3.7 (2025-12-05)
 
 ### Features
